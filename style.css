@@ -413,6 +413,7 @@ body {
           opacity: 0;
           transform: translateX(100px); /* Move right */
           transition: opacity 1s ease-out, transform 1s ease-out;
+          font-size: 40vw;
         }
         
         /* When visible, animate them */
