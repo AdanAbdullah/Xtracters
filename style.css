@@ -3,18 +3,70 @@
             font-family: 'Lato', sans-serif;
             padding: 0;
             margin: 0;
+            size: 100vw;
            
         }
-        nav{
-            background-color: #111;
-            color: white;
-            padding: 20px 50px;
+        /* Slight offset fade/slide in */
+.fade-in-slide {
+  animation: fadeInSlide 0.5s ease forwards;
+}
 
-        }
+@keyframes fadeInSlide {
+  0% { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Full offset slide in from the right */
+.full-slide-in {
+  animation: slideInFull 0.7s ease forwards;
+}
+
+@keyframes slideInFull {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Navbar styling */
+nav {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #111;
+  background-color: #000000;
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* When hidden, slide up */
+nav.hidden {
+  transform: translateY(-100%);
+}
+
+/* Prevent content from being overlapped by the fixed navbar */
+body {
+  padding-top: 70px;  /* Adjust this value to your navbar's height */
+}
+.limitedOffer{
+  margin-right: 2vw;
+}
         .navTop{
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
         }
         .search{
             display: flex;
@@ -46,7 +98,7 @@
             font-weight: 400;
         }
         .slider{
-           background-image: url("https://images.unsplash.com/photo-1604147495798-57beb5d6af73?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80");
+           background-image: url("bgforthings.jpg");
            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
           overflow: hidden;
            
@@ -154,12 +206,57 @@
             .sliderItem:nth-child(5) .sliderPrice{
             background-color: rgba(2, 2, 255, 0.333);
             }
+            .sliderItem {
+              opacity: 0;
+              transform: translateY(20px);
+              transition: opacity 1s ease, transform 1s ease;
+          }
+          .sliderWrapper .sliderItem.active {
+              opacity: 1;
+              transform: translateY(0);
+          }
+          @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .buybutton:hover {
+            animation: bounce 0.5s ease-in-out;
+        }
+        .SliderTitle {
+          transform: translateX(-100%);
+          opacity: 0;
+          transition: transform 1s ease, opacity 1s ease;
+      }
+      .sliderItem.active .SliderTitle {
+          transform: translateX(0);
+          opacity: 1;
+      }
+      
+                    
           .Advantages{
             display: flex;
             text-align: center;
             justify-content: space-around;
 
+
           }
+          /* Initially hidden */
+/* Initially hidden */
+.Advantagee {
+  opacity: 0;
+  transform: translateY(50px); /* Move down initially */
+  transition: opacity 1s ease-out, transform 1s ease-out;
+  width: 10vw;
+  height: 10vw;
+}
+
+/* When visible */
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
           .Advantages div{
             background-color: whitesmoke;
             padding: 30px 50px;
@@ -301,12 +398,31 @@
         .product_description{
           font-weight: 200;
         }
-        .selling{
-          height:100vh;
+        .selling {
+          height: 100vh;
           background-color: whitesmoke;
           position: relative;
-          clip-path: polygon(0 15%,100% 0,100% 100%,0 100%);
+          clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+          opacity: 0;
+          transform: translateX(-100px); /* Move left */
+          transition: opacity 1s ease-out, transform 1s ease-out;
         }
+        
+        /* Initially hide image (slide from right) */
+        .selling_shoe_img {
+          opacity: 0;
+          transform: translateX(100px); /* Move right */
+          transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        
+        /* When visible, animate them */
+        .show {
+          opacity: 1;
+          transform: translateX(0);
+        }
+/* When visible */
+
+
         .payment{
           width: 500px;
           height: 500px;
@@ -553,6 +669,7 @@ copyright{
         clip-path: none;
        position: relative;
        margin-bottom: 20px;
+       size: 100vw;
       }
       .sliderImg{
          width: 90%;
@@ -638,6 +755,7 @@ copyright{
             margin: 5px 0; /* Reduce space between sections */
             border-radius: 15%; /* Slightly reduce border radius */
             height: 40%;
+            font-size: 5vm;
           }
           .h21{
             font-size: 200%;
@@ -654,7 +772,7 @@ copyright{
         }
         .product{
          overflow: hidden;
-          size: 100vw;
+          size: 10vw;
         }
         .selling{
           clip-path: none;
@@ -718,3 +836,87 @@ copyright{
       }
       
     }
+/* Default Navbar Styling */
+/* Default Navbar Styles */
+nav {
+  width: 100%;
+  background: white;
+  padding: 15px 30px;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Top Navbar Layout */
+.navTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Search Bar */
+.search {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.searchInput {
+  border: none;
+  outline: none;
+  padding: 5px;
+}
+
+/* Bottom Menu */
+.navBottom {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Burger Icon */
+.hamburger {
+  display: none;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  /* Hide navBottom by default */
+  .navBottom {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      background: white;
+      text-align: center;
+      padding: 10px 0;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Show hamburger */
+  .hamburger {
+    all: unset; 
+    display: block;
+      font-size: 30px;
+      cursor: pointer;
+      color: #000;
+      right:0;
+  }
+   .navTop{
+    position: relative;
+   }
+  /* Show menu when hovering or clicking */
+  .navBottom.showMenu {
+      display: flex;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+  }
+}
